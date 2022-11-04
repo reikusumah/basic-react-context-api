@@ -1,17 +1,17 @@
 import React, { useState, useContext } from "react";
 import { DataContext } from "../context/DataContext";
+import { add } from "../actions/listAction";
 
 const Form = () => {
   const [text, setText] = useState("");
-  const { add } = useContext(DataContext);
-
+  const { dispatch } = useContext(DataContext);
   const change = (e) => {
     setText(e.target.value);
   };
 
   const submit = (e) => {
     e.preventDefault();
-    add(text);
+    dispatch(add(text));
     setText("");
   };
 
